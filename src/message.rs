@@ -314,7 +314,9 @@ impl Message{
 
     pub fn src_name(&self) -> String{
         unsafe{
-            from_c_str!(mem::transmute((*self.src()).name)).to_string()
+			let src = self.src();
+			let name = (*src).name;
+            from_c_str!(mem::transmute(name)).to_string()
         }
     }
 
