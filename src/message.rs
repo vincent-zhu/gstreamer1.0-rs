@@ -315,8 +315,11 @@ impl Message{
     pub fn src_name(&self) -> String{
         unsafe{
 			let src = self.src();
-			let name = (*src).name;
-            from_c_str!(mem::transmute(name)).to_string()
+			if !src.is_null() {
+            	from_c_str!((*src).name).to_string()
+			} else {
+				return "Unknown".to_string();
+			}
         }
     }
 
