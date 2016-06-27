@@ -75,7 +75,7 @@ mod link_windows;
 
 pub fn init(){
     unsafe{
-        gst_init(ptr::null::<i32>() as *mut i32, ptr::null_mut::<i8>() as *mut *mut *mut i8);
+        gst_init(ptr::null::<i32>() as *mut i32, ptr::null_mut::<u8>() as *mut *mut *mut u8);
     }
 }
 
